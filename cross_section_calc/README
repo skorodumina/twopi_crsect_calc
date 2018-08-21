@@ -1,0 +1,16 @@
+The script cr_sec_combined_small_bin.C is used for the cross section calculation. 
+
+It uses as inputs:
+
+- the data_file that is produced after the histogram-proccessing scripts (see the folder ../hist_proc_scripts/ and the README there).
+
+- the sim_file that is produced after the histogram-proccessing scripts (see the folder ../hist_proc_scripts/ and the README there).
+
+- the fermi_correction_file that is produced after the Fermi corection program (see the folder ../fermi_corr/ and the README there).
+
+- the auxiliary file with model proton-at-rest cross sections. This file is located at /mss/home/skorodum/e1e/empty_cells_new_bin.root
+
+
+The script calculates the single-differeential and integral cross sections and outputs them in the root file.
+
+The cross sections then should be subject to the binning corrections and systematic errors stud.

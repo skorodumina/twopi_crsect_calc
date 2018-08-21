@@ -1,0 +1,11 @@
+Here three subdirectories are located:
+
+
+hist_proc_scripts/ that contains the scripts for processing outputs of the double-pion analysis programm
+
+fermi_corr/ that containes the program for the calculation of the Fermi correction factor
+
+cross_section_calc/ that contains the script for the double-pion cross section calculation
+
+
+Each subdirectory here contains its own README.

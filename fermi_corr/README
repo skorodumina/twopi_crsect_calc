@@ -1,0 +1,18 @@
+This folder stores the scripts needed to calculate the Fermi correction factor.
+
+For this purpose the two sets of files are used. 
+
+The first set is generated with the TWOPEG event generator (off the proton at rest). 
+These files (10000) are stored at /cache/mss/clas/e1e/production/simulation_2pi/sim_skorodum_Aug2016/fermicorr/nofermi_norad_conv/
+
+The second set is generated with the TWOPEG-D event generator (off the moving proton). 
+These files (10000) are stored at /cache/mss/clas/e1e/production/simulation_2pi/sim_skorodum_Aug2016/fermicorr/fermi_norad_conv/
+
+Both two sets should be processed with the Fermi correction program. It is located in the corresponding folder. The path to the corresponding file-set should be changed manually in script_xsect_calc.cxx
+
+The program should be run on farms.The submission scripts are located at the directory jsub/
+The output consists of 2000 files for each set.
+
+These 2000 files are then subject to combining using hadd. The corresponding scripts are located at jsub/ferm_norad/ and jsub/noferm_norad/ for each of two sets.
+
+Once combined, the two resulting files should be proccesed with the script corr_fact_calc.C to calculate the Fermi correction factor.

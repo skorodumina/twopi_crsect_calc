@@ -1,0 +1,32 @@
+These scripts are used to process the outputs of the double-pion analysis program, which is stored at https://github.com/skorodumina/two\_pi\_analysis\_code.git
+
+
+==========SIMULATION==============
+
+The folowing scripts directly use the outputs of the double-pion analysis program. They convert 1325 of those files into 53.   
+
+first_2top_gen_rec_add.C, 
+second_2top_sig2_gen_rec_add.C,
+third_2top_evt_gen_rec_add.C 
+
+They work with the histograms filled with sigma, sigma*sigma, and one, respectively.
+To run them in sequence the corresponding *.sh scripts should be used (i.e., first_2top_gen_rec_add.sh 1325).
+
+The 53 outputs of these scripts are then subject to hadd to form the combined files.
+
+The following scripts work with the aforementioned combined files:
+
+top_combine_sim_eff.C
+top_combine_sim_sig2.C
+top_combine_sim_evt.C
+
+They are used for either the efficiency calculation and/or topologies combination.
+
+
+===============DATA================
+
+For the experimental data the following script uses as inputs two files (for the full and empty target runs), both the outputs of the double-pion analysis program.
+
+top_combine_data.C
+
+The script combines topologies and applis FSI correction. 
