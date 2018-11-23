@@ -1,0 +1,17 @@
+This folder contains scripts for the integral cross sections. They should be processed in the following order.
+
+1) integral_avrg_sets.C
+
+	This script uses as an input the output file of the cross section calculation program. The script takes 1diff distributions from the file, integrates them to find the integrals within each variable set, averages these integrals, and then scales all 1diff distributions in a way they give the average integral upon integration. The script also calculates the systematic errors due to the integration over different sets of variables (for each WQ2 bin) and outputs them into the .txt file.
+	The script does NOT do anything with the statistical errors. The 1diff distributions preserve their own stat errors, which propagate automatically upon scaling. The plotted integral distribution are with zero stat errors - they are plotted just for illustrative purposes and do not go anywhere.
+	The scpript should be processed three times for the cases of three different values of the relative efficiency error cut (0.25, 0.30, and 0.35).
+	
+2) integral_avrg_efferr.C
+
+	This script uses as inputs three files produced by the previous script. The script takes 1diff distributions from these files, integrates one invariant mass distribution from each file to find the integrals that correspond to the given value of the efficiency cut (Note that after the previous script integrals from all 1diff distribution within 1 set are identical. That is why only one invariant mass distribution is integrated),averages these integrals, and then outputs the root file with the 2D histogram filled with these integrals. The histogram acquires preliminary statistical uncertainties. 
+	
+3) bin_corr_2d_q2vsw_hist.C
+
+	This script uses as an input the root file with 2D histogram produced after the previous script. The script performes 2D binning corrections and outputs the 2D histogram filled with the corrected values into root file.
+	If one wants to take a look at how the correction is done for each WQ2 point, the script bin_corr_2d.C should be then used.
+	The output of these script (with 2D histogram) is then used in the script scale_1d.C together with the correcponding file with 1diff distributions.

@@ -1,0 +1,10 @@
+This folder contains scripts for the isingle-differential cross sections. They should be processed in the following order.
+
+1) mass_corr.C
+
+	This script uses as an input the output of the cross section calculation programm for eff_err = 0.3. The script performes the correction of the cross section in the next to last bin of the invariant mass distributions. The correction factor is in the mass_corr_factor.root. The script outputs the resulting cross sections into the new file.
+	
+2) bin_corr_1d_convert_phi.C
+
+	This script uses as an input the file produced by the previous script. This script performes 1dim binning corretions for all 1diff distributions including phi. If one wants to look at the correction performance for different WQ2 bin, the script bin_corr_1d.C should be then used.
+	The script outputs the file with the corrected 1diff distributions that is further used in the script "scale_1d.C" together with the corresponding 2D histogram filled with integral cross sections.
