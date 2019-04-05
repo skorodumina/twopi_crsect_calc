@@ -27,7 +27,7 @@ Int_t *bins = new Int_t[5];
 Int_t o_max =12;
 Int_t p_max =12;
 Int_t r_max = 10;
-Int_t t_max = 8;
+Int_t t_max = 6;
 Int_t y_max = 8;
 
 
@@ -68,10 +68,10 @@ TH1D *h_prj_crs_1_nofermi_evt, *h_prj_crs_2_nofermi_evt, *h_prj_crs_3_nofermi_ev
 
 TH1D *h_prj_crs_1_corr, *h_prj_crs_2_corr, *h_prj_crs_3_corr;
 
-TFile *MyFile_fermi = new TFile("/volatile/clas/clase1-6/skorodum/twopeg_d/fermi_corr/jsub/ferm_norad/out_ferm_norad_tot_20Aug18_nphb_varset.root","READ");
+TFile *MyFile_fermi = new TFile("/cache/clas/e1e/production/simulation_2pi/sim_skorodum_Aug2016/fermicorr/out_ferm_norad_tot_20apr18.root","READ");
 //TFile *MyFile_fermi = new TFile("ferm_norad/out_hadd_ferm_norad_1.root","READ");
 //TFile *MyFile_nofermi = new TFile("out_hadd_noferm_norad_1.root","READ");
-TFile *MyFile_nofermi = new TFile("/volatile/clas/clase1-6/skorodum/twopeg_d/fermi_corr/jsub/noferm_norad/out_noferm_norad_tot_20Aug18_nphb_varset.root","READ");
+TFile *MyFile_nofermi = new TFile("/cache/clas/e1e/production/simulation_2pi/sim_skorodum_Aug2016/fermicorr/out_noferm_norad_tot_23apr18.root","READ");
 
 
 Short_t n_bins[12]={21, 21, 20, 20, 19, 19, 18, 17, 16, 15, 13, 11};
@@ -372,7 +372,7 @@ h_w_int_nofermi[k]->Draw("Psame");
 
 
 qqq.str("");
-qqq << "out_fermi_corr_fact_20Aug18_nphb_varset.root";
+qqq << "out_fermi_corr_fact_25Mar19.root";
 
 TFile *MyFile = new TFile(qqq.str().c_str(),"RECREATE");
 MyFile->cd();

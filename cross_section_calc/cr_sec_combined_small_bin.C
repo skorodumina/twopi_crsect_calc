@@ -63,9 +63,9 @@ leg_w_int->SetFillStyle(0);
 
 Int_t k,i,j;
 Int_t number_entr;
-Float_t eff_threshold = 0.0;
+Float_t eff_threshold = 0;
 Float_t rec_threshold = 0.;
-Float_t eff_err_threshold = 0.3;
+Float_t eff_err_threshold = 0.35;
 Float_t W_selected = 1.5125;
 Float_t factor;
 
@@ -95,10 +95,45 @@ TH1D *h_w_int[16];
 //TFile *file_sim = new TFile("new_scripts/out_sim_2top_28Jun18_fin.root","READ");
 //TFile *file_sim = new TFile("new_scripts/out_sim_2top_2July18_fin.root","READ");
 //TFile *file_sim = new TFile("new_scripts/out_sim_2top_26July18_fin.root","READ");
-TFile *file_sim = new TFile("new_scripts/out_sim_2top_1Aug18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_1Aug18_fin.root","READ");
 //TFile *file_sim = new TFile("new_scripts/out_sim_2top_13Aug18_newphbin.root","READ");
 //TFile *file_sim = new TFile("new_scripts/out_sim_2top_17Aug18_fin.root","READ");
-
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_23Aug_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_24Aug18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_28Aug18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_4Sept18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_1top_5Sept18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_12Sept_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_25Sept18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_29Oct18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_3Dec18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_13Dec18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_17Dec18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_20Dec18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_24Dec18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_25Dec18_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_21Jan19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_23Jan19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_23Jan19_fin_pim.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_30Jan19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_1Feb19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_4Feb19_fin_2.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_6Feb19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_11Feb19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_13Feb19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_15Feb19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_18Feb19_fin_pim.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_18Feb19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_21Feb19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_27Feb19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_27Feb19_fin_pim.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_4Mar19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_6Mar19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_22Mar19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_27Mar19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_29Mar19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_1Apr19_fin.root","READ");
+TFile *file_sim = new TFile("new_scripts/out_sim_2top_3Apr19_fin.root","READ");
 
 //TFile *file_data = new TFile("new_scripts/out_data_1top_comb_6apr18_nofsicorr.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_1top_comb_6apr18_fsicorr.root","READ");
@@ -121,21 +156,66 @@ TFile *file_sim = new TFile("new_scripts/out_sim_2top_1Aug18_fin.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_2top_comb_26Jul18.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_2top_comb_1Aug18.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_2top_comb_3Aug18_fsicor.root","READ");
-TFile *file_data = new TFile("new_scripts/out_data_2top_comb_6Aug18_fsicor_frac.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_6Aug18_fsicor_frac.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_2top_comb_13Aug18_newphbin.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_2top_comb_17Aug18_nphb_varset.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_23Aug18_ph6_mass.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_24Aug18_ph6_mass_cuts.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_27Aug18_ph6_mass_cuts2.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_4Sept18_fin.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_1top_comb_5Sept18_fin.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_12Sept18_fin2.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_25Sept18_fin2.root","READ");
 
-
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_30Oct18_fin.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_21Nov18_pim.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_29Nov18_newcut.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_3Dec18_newcut.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_6Dec18_newcut2.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_13Dec18_newcut2.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_17Dec18_newcut3.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_20Dec18_newcut4.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_24Dec18_newcut5.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_25Dec18_newcut6.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_15Jan19_newcut7.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_21Jan19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_23Jan19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_23Jan19_test7.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_23Jan19_pim.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_30Jan19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_1Feb19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_4Feb19_2.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_6Feb19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_11Feb19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_13Feb19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_15Feb19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_18Feb19_pim.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_18Feb19_3.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_21Feb19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_27Feb19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_27Feb19_pim.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_4Mar19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_6Mar19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_6Mar19_pim.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_22Mar19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_27Mar19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_29Mar19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_1Apr19.root","READ");
+TFile *file_data = new TFile("new_scripts/out_data_2top_comb_3Apr19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_3Apr19_pim.root","READ");
 
 TFile *file_model = new TFile("empty_cells_new_bin.root","READ");
 //TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_factor_11feb17.root","READ");
-TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_1Aug18_notnorm.root","READ");
+TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_25Mar19.root","READ");
+
+//TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_29Oct18.root","READ");
 //TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_13Aug18_newphbin.root","READ");
 //TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_3Aug18_avrg2.root","READ");
 //TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_20Aug18_nphb_varset.root","READ");
+//TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_23Aug18_ph6_mass.root","READ");
 
 //Q2 LOOP
-for (Int_t qq2=0; qq2<6;qq2++) {
+for (Int_t qq2=8; qq2<12;qq2++) {
 Q2_bin = 0.425 + 0.05*qq2;
 
 qqq.str("");
@@ -151,6 +231,7 @@ max_w = get_max_w(Q2_bin);
 read_rad_corr_skor(qq2);
 
 //W LOOP
+//for (i=15; i< 16;i++) {
 for (i=min_w; i< max_w;i++) {
 W_bin[i] = 1.3125+0.025*i; 
 
@@ -324,6 +405,7 @@ phi_distr_write(i);
 
 Int[i]= (Int_1[i]+Int_2[i]+Int_3[i])/3.;
 Int_err[i]= (Int_err_1[i]+Int_err_2[i]+Int_err_3[i])/3.;
+cout << Int_err[i]/Int[i] <<" tttttfftftft\n";
 
 h_w_int[qq2]->Fill(W_bin[i],Int[i]); 
 h_w_int[qq2]->SetBinError(h_w_int[qq2]->FindBin(W_bin[i]),Int_err[i]);
@@ -531,6 +613,8 @@ qqq.str("");
 qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h_5dim_3_sim_gen_q2_" << Q2_bin*1000 << "_w_" << 10000*W_bin[i];
 gDirectory->GetObject(qqq.str().c_str(),h_gen_3[i]);
 qqq.str("");
+
+//cout << h_gen_2[i]->GetNbins()<<" fff "<<h_gen_2[i]->GetNbins()<< endl;
 //----------------------------------------------
 qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h_5dim_1_sim_gen_evt_q2_" << Q2_bin*1000 << "_w_" << 10000*W_bin[i];
 gDirectory->GetObject(qqq.str().c_str(),h_gen_1_evt[i]);
@@ -567,6 +651,8 @@ qqq.str("");
 qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h_eff_3_q2_" << Q2_bin*1000 << "_w_" << 10000*W_bin[i];
 gDirectory->GetObject(qqq.str().c_str(),h_eff_3[i]);
 qqq.str("");
+
+//cout << h_eff_2[i]->GetNbins()<<" fff "<<h_eff_2[i]->GetNbins()<< endl;
 };
 
 //The subroutine reads the data and empty target histograms
@@ -814,7 +900,7 @@ b3 = h_gen_3[i]->GetBinContent(bins);
 err1 = (b1 - 2*a1)/b1/b1/b1*h_rec_1_sig2[i]->GetBinContent(bins) + a1*a1/b1/b1/b1/b1*h_gen_1_sig2[i]->GetBinContent(bins);
 
 if ((h_eff_1[i]->GetBinContent(bins) > 0.)&&(err1>0.)) h_eff_1[i]->SetBinError(bins,sqrt(err1));
-
+//||(sqrt(err1)/h_eff_1[i]->GetBinContent(bins) > 1.))
 if (err1 < 0.){
 h_eff_1[i]->SetBinContent(bins,0.);
 h_eff_1[i]->SetBinError(bins,0.);
@@ -991,6 +1077,167 @@ h_rec_3[i]->SetBinError(bins,0.);
 
 //The subroutine gets histograms for the empty cells filling
 void get_hist_for_cells_fill(Int_t i) {
+
+THnSparseD *h_rec_unit_1,*h_rec_unit_2,*h_rec_unit_3;
+THnSparseD *h_gen_unit_1,*h_gen_unit_2,*h_gen_unit_3;
+THnSparseD *h_data_over_unit_rec_1, *h_data_over_unit_rec_2, *h_data_over_unit_rec_3;
+
+
+Float_t factor_data_int_1, factor_rec_int_1, total_factor_1;
+Float_t factor_data_int_2, factor_rec_int_2, total_factor_2;
+Float_t factor_data_int_3, factor_rec_int_3, total_factor_3;
+
+
+TH1D *h_data_prj_tmp_1, *h_data_prj_tmp_2, *h_data_prj_tmp_3;
+TH1D *h_rec_prj_tmp_1, *h_rec_prj_tmp_2, *h_rec_prj_tmp_3;
+
+
+//UNIT RECONSTRUCTED
+qqq.str("");
+qqq << "h_rec_unit_1_" << i;
+h_rec_unit_1 = (THnSparseD*)h_rec_1[i]->Clone(qqq.str().c_str());
+h_rec_unit_1->Divide(h_rec_1[i]);
+
+qqq.str("");
+qqq << "h_rec_unit_2_" << i;
+h_rec_unit_2 = (THnSparseD*)h_rec_2[i]->Clone(qqq.str().c_str());
+h_rec_unit_2->Divide(h_rec_2[i]);
+
+qqq.str("");
+qqq << "h_rec_unit_3_" << i;
+h_rec_unit_3 = (THnSparseD*)h_rec_3[i]->Clone(qqq.str().c_str());
+h_rec_unit_3->Divide(h_rec_3[i]);
+
+
+//UNIT GENERATED
+qqq.str("");
+qqq << "h_gen_unit_1_" << i;
+h_gen_unit_1 = (THnSparseD*)h_gen_1[i]->Clone(qqq.str().c_str());
+h_gen_unit_1->Divide(h_gen_1[i]);
+
+qqq.str("");
+qqq << "h_gen_unit_2_" << i;
+h_gen_unit_2 = (THnSparseD*)h_gen_2[i]->Clone(qqq.str().c_str());
+h_gen_unit_2->Divide(h_gen_2[i]);
+
+qqq.str("");
+qqq << "h_gen_unit_3_" << i;
+h_gen_unit_3 = (THnSparseD*)h_gen_3[i]->Clone(qqq.str().c_str());
+h_gen_unit_3->Divide(h_gen_3[i]);
+
+//1 IN BINS WHERE Ngen>1, Nrec=0 or efficiency errors > eff_err_threshold ("map" of empty cells)
+h_gen_unit_1->Add(h_rec_unit_1,-1);
+h_gen_unit_2->Add(h_rec_unit_2,-1);
+h_gen_unit_3->Add(h_rec_unit_3,-1);
+
+//-----------------------------------------
+h_data_over_unit_rec_1 = (THnSparseD*)h_data_1[i]->Clone("h_data_over_unit_rec_1");
+h_data_over_unit_rec_1 ->Divide(h_rec_unit_1);
+
+h_data_over_unit_rec_2 = (THnSparseD*)h_data_2[i]->Clone("h_data_over_unit_rec_2");
+h_data_over_unit_rec_2 ->Divide(h_rec_unit_2);
+
+h_data_over_unit_rec_3 = (THnSparseD*)h_data_3[i]->Clone("h_data_over_unit_rec_3");
+h_data_over_unit_rec_3 ->Divide(h_rec_unit_3);
+
+//---------------
+
+h_data_prj_tmp_1 = h_data_over_unit_rec_1->Projection(4,"");
+factor_data_int_1 = h_data_prj_tmp_1->Integral();
+
+h_data_prj_tmp_2 = h_data_over_unit_rec_2->Projection(4,"");
+factor_data_int_2 = h_data_prj_tmp_2->Integral();
+
+h_data_prj_tmp_3 = h_data_over_unit_rec_3->Projection(4,"");
+factor_data_int_3 = h_data_prj_tmp_3->Integral();
+
+
+//new
+h_rec_prj_tmp_1 = h_rec_1[i]->Projection(4,"");
+factor_rec_int_1 = h_rec_prj_tmp_1->Integral();
+
+h_rec_prj_tmp_2 = h_rec_2[i]->Projection(4,"");
+factor_rec_int_2 = h_rec_prj_tmp_2->Integral();
+
+h_rec_prj_tmp_3 = h_rec_3[i]->Projection(4,"");
+factor_rec_int_3 = h_rec_prj_tmp_3->Integral();
+
+
+total_factor_1 = factor_data_int_1/factor_rec_int_1;
+total_factor_2 = factor_data_int_2/factor_rec_int_2;
+total_factor_3 = factor_data_int_3/factor_rec_int_3;
+
+qqq.str("");
+qqq << "h_cells_corr_hist_1_" << i;
+h_cells_corr_hist_1[i] = (THnSparseD*)h_gen_1[i]->Clone(qqq.str().c_str());
+h_cells_corr_hist_1[i]->Divide(h_gen_unit_1);
+h_cells_corr_hist_1[i]->Scale(total_factor_1);
+
+qqq.str("");
+qqq << "h_cells_corr_hist_2_" << i;
+h_cells_corr_hist_2[i] = (THnSparseD*)h_gen_2[i]->Clone(qqq.str().c_str());
+h_cells_corr_hist_2[i]->Divide(h_gen_unit_2);
+h_cells_corr_hist_2[i]->Scale(total_factor_2);
+
+qqq.str("");
+qqq << "h_cells_corr_hist_3_" << i;
+h_cells_corr_hist_3[i] = (THnSparseD*)h_gen_3[i]->Clone(qqq.str().c_str());
+h_cells_corr_hist_3[i] ->Divide(h_gen_unit_3);
+h_cells_corr_hist_3[i]->Scale(total_factor_3);
+
+
+Int_t *bins = new Int_t[5];
+Int_t o_max =12;
+Int_t p_max =12;
+Int_t r_max = 10;
+Int_t t_max = 6;
+Int_t y_max = 8;
+
+if ((i==0)||(i==1)) {
+o_max = p_max = 8;
+r_max = 6;
+t_max = 5;
+y_max = 5; 
+};
+if ((i==2)||(i==3)) {
+o_max = p_max = 10;
+r_max = 8;
+t_max = 5;
+y_max = 6;
+}; 
+if ((i>=4)&&(i<=6)){
+o_max = p_max =12;
+r_max =10;
+t_max = 5;
+y_max = 8;
+};
+
+
+for (Int_t o=1; o<=o_max; o++) {
+for (Int_t p=1; p<=p_max; p++) {
+for (Int_t r=1; r<=r_max; r++) {
+for (Int_t t=1; t<=t_max; t++) {
+for (Int_t y=1; y<=y_max; y++) {
+bins[0] = o;
+bins[1] = p;
+bins[2] = r;
+bins[3] = t;
+bins[4] = y;
+h_cells_corr_hist_1[i]->SetBinError(bins,0.);
+h_cells_corr_hist_2[i]->SetBinError(bins,0.);
+h_cells_corr_hist_3[i]->SetBinError(bins,0.);
+};
+};
+};
+};
+};
+
+
+};
+
+
+//OLD The subroutine gets histograms for the empty cells filling
+/*void get_hist_for_cells_fill(Int_t i) {
 
 THnSparseD *h_rec_unit_1,*h_rec_unit_2,*h_rec_unit_3;
 THnSparseD *h_gen_unit_1,*h_gen_unit_2,*h_gen_unit_3;
@@ -1193,7 +1440,9 @@ h_cells_corr_hist_3[i]->SetBinError(bins,0.);
 };
 
 
-};
+};*/
+
+
 
 
 
@@ -1489,14 +1738,32 @@ c->Clear();
 
 //for final
 TH1D *empty_fill_err(TH1D *h1, TH1D *h2,TH1D *h3) {
-Double_t err1,err2;
+Double_t err1,err2,err3, tmp;
+tmp=0.;
 for (Int_t zzz=1; zzz<=h1->GetNbinsX(); zzz++) {
 err1=h1->GetBinError(zzz);
 err2= (h3->GetBinContent(zzz) - h2->GetBinContent(zzz))/2.;
 err2= err2/(h3->GetBinContent(zzz));
+//if (err2>0.5) cout << err2<<" eeeeeeeeeeeeeeeeeeeeeeeeeee\n";
+
 err2= err2*(h1->GetBinContent(zzz));
-h1->SetBinError(zzz,(sqrt(err1*err1+err2*err2)));
+
+err3 = fabs(h1->GetBinContent(zzz) - h3->GetBinContent(zzz))/2.;
+//err3 = fabs(h1->GetBinContent(zzz) - h3->GetBinContent(zzz));
+err3 = err3/h3->GetBinContent(zzz)*h1->GetBinContent(zzz);
+
+tmp = tmp+ err2/err3;
+
+//if (err3/h3->GetBinContent(zzz) > 1.) cout << err3/h3->GetBinContent(zzz) <<" "<< err3/h1->GetBinContent(zzz)<< " qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq\n";
+//if (err3/h1->GetBinContent(zzz) > 1.) err3 = h1->GetBinContent(zzz);
+
+//cout <<err2/err3<< " rrr\n";
+//err3=0.;
+//h1->SetBinError(zzz,(sqrt(err1*err1+err2*err2)));
+h1->SetBinError(zzz,(sqrt(err1*err1+err2*err2+err3*err3)));
 };
+//cout << tmp/(h1->GetNbinsX())<<" rrr\n";
+//cout << endl;
 return h1;
 };
 //for nofermi
