@@ -1,6 +1,6 @@
 This folder stores the scripts needed to calculate the FSI correction factor.
 
 
-miss_mass_fit_noq2dep.C taked the missing mass histrograms for the data and sim, fits them and outputs the factor for each W and Q2 bin. This script is supposed to be run five times for five different number of bins in the missing mass histigrams (needed for the systematic error estimation).
+miss_mass_fit_noq2dep.C takes the missing mass histrograms for the data and sim, fits them and outputs the factor for each W and Q2 bin. This script is supposed to be run five times for five different number of bins in the missing mass histigrams (needed for the systematic error estimation).
 
-fact_aver.C averages the five sets of FSI correction factors and outputs the resulting mean factor.
+fact_aver.C averages the five sets of FSI correction factors and outputs the resulting mean factor for each W and Q2 bin.
