@@ -65,7 +65,7 @@ Int_t k,i,j;
 Int_t number_entr;
 Float_t eff_threshold = 0;
 Float_t rec_threshold = 0.;
-Float_t eff_err_threshold = 0.35;
+Float_t eff_err_threshold = 0.3;
 Float_t W_selected = 1.5125;
 Float_t factor;
 
@@ -133,7 +133,25 @@ TH1D *h_w_int[16];
 //TFile *file_sim = new TFile("new_scripts/out_sim_2top_27Mar19_fin.root","READ");
 //TFile *file_sim = new TFile("new_scripts/out_sim_2top_29Mar19_fin.root","READ");
 //TFile *file_sim = new TFile("new_scripts/out_sim_2top_1Apr19_fin.root","READ");
-TFile *file_sim = new TFile("new_scripts/out_sim_2top_3Apr19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_3Apr19_fin.root","READ");
+
+//TFile *file_sim = new TFile("new_scripts/out_sim_pim_12Aug19_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_19Aug19_fin_old_cc.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_22Aug19_fin_noelfid.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_26Aug19_fin_cc_08.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_28Aug19_fin_no_thvsseg.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_30Aug19_fin_invmcut.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_2Sept19_fin_mmcut.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_18Sept_fin_old_cc2.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_22Sept19_fin_thvsp.root","READ");
+
+//TFile *file_sim = new TFile("new_scripts/out_sim_FULL_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_1Jul2021_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_5Jul2021_fin.root","READ");
+//TFile *file_sim = new TFile("new_scripts/out_sim_2top_10Jul2021_fin.root","READ");
+
+//FINAL
+TFile *file_sim = new TFile("new_scripts/out_sim_2top_5Jul2021_fin.root","READ");
 
 //TFile *file_data = new TFile("new_scripts/out_data_1top_comb_6apr18_nofsicorr.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_1top_comb_6apr18_fsicorr.root","READ");
@@ -201,10 +219,37 @@ TFile *file_sim = new TFile("new_scripts/out_sim_2top_3Apr19_fin.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_2top_comb_27Mar19.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_2top_comb_29Mar19.root","READ");
 //TFile *file_data = new TFile("new_scripts/out_data_2top_comb_1Apr19.root","READ");
-TFile *file_data = new TFile("new_scripts/out_data_2top_comb_3Apr19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_3Apr19.root","READ");
+
 //TFile *file_data = new TFile("new_scripts/out_data_2top_comb_3Apr19_pim.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_pim_comb_12Aug19.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_19Aug19_old_cc.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_22Aug19_noelfid.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_26Aug19_cc_08.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_28Aug19_no_thvsseg.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_30Aug19_invmcut.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_2Sept19_mmcut.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_18Sept19_old_cc2.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_18Sept19_old_cc2_nofrac.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_22Sept19_thvsp.root","READ");
+
+//TFile *file_data = new TFile("new_scripts/out_data_FULL.root","READ");
+//good 
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_21Jul2021_check_newfsicor.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_10Jul2021_check_NO_p_mom_cut.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_15Jul2021_FINAL.root","READ");
+
+//FINAL
+TFile *file_data = new TFile("new_scripts/out_data_2top_comb_17Jul2021_FINAL.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_pimdata_17Jul2021_FINAL.root","READ");
+
+
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_10Jul2021_check_p_mom_cut.root","READ");
+//TFile *file_data = new TFile("new_scripts/out_data_2top_comb_10Jul2021_check_p_mom_cut_fsicor.root","READ");
 
 TFile *file_model = new TFile("empty_cells_new_bin.root","READ");
+
+
 //TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_factor_11feb17.root","READ");
 TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_25Mar19.root","READ");
 
@@ -215,7 +260,7 @@ TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_25Mar19.root",
 //TFile *file_fermicorr = new TFile("fermi_corr/out_fermi_corr_fact_23Aug18_ph6_mass.root","READ");
 
 //Q2 LOOP
-for (Int_t qq2=8; qq2<12;qq2++) {
+for (Int_t qq2=0; qq2<12;qq2++) {
 Q2_bin = 0.425 + 0.05*qq2;
 
 qqq.str("");
@@ -1212,6 +1257,9 @@ t_max = 5;
 y_max = 8;
 };
 
+//Int_t Nb_1 = 0.;
+//Int_t Nb_2 = 0.;
+//Int_t Nb_3 = 0.;
 
 for (Int_t o=1; o<=o_max; o++) {
 for (Int_t p=1; p<=p_max; p++) {
@@ -1223,6 +1271,12 @@ bins[1] = p;
 bins[2] = r;
 bins[3] = t;
 bins[4] = y;
+
+//if (h_eff_1[i]->GetBinContent(bins)>0.) Nb_1 = Nb_1+1;
+//if (h_eff_2[i]->GetBinContent(bins)>0.) Nb_2 = Nb_2+1;
+//if (h_eff_3[i]->GetBinContent(bins)>0.) Nb_3 = Nb_3+1;
+
+
 h_cells_corr_hist_1[i]->SetBinError(bins,0.);
 h_cells_corr_hist_2[i]->SetBinError(bins,0.);
 h_cells_corr_hist_3[i]->SetBinError(bins,0.);
@@ -1231,6 +1285,9 @@ h_cells_corr_hist_3[i]->SetBinError(bins,0.);
 };
 };
 };
+//cout <<" JJJJJJJ "<< Nb_1<<" \n";
+//cout <<" JJJJJJJ "<< Nb_2<<" \n";
+//cout <<" JJJJJJJ "<< Nb_3<<" \n";
 
 
 };
@@ -1738,19 +1795,38 @@ c->Clear();
 
 //for final
 TH1D *empty_fill_err(TH1D *h1, TH1D *h2,TH1D *h3) {
-Double_t err1,err2,err3, tmp;
+//h1 - final
+//h2 - noempt cells, no ferm corr
+//h3 - no ferm corr
+Double_t err1,err2,err3, err3_tmp, err3_new, tmp;
 tmp=0.;
 for (Int_t zzz=1; zzz<=h1->GetNbinsX(); zzz++) {
+//taking abs stat err from fin
 err1=h1->GetBinError(zzz);
+//taking abs empt cells error from cells filled/not filled
 err2= (h3->GetBinContent(zzz) - h2->GetBinContent(zzz))/2.;
+//taking rel empt cells error
 err2= err2/(h3->GetBinContent(zzz));
 //if (err2>0.5) cout << err2<<" eeeeeeeeeeeeeeeeeeeeeeeeeee\n";
 
+//scaling it to the fin 
 err2= err2*(h1->GetBinContent(zzz));
 
-err3 = fabs(h1->GetBinContent(zzz) - h3->GetBinContent(zzz))/2.;
-//err3 = fabs(h1->GetBinContent(zzz) - h3->GetBinContent(zzz));
-err3 = err3/h3->GetBinContent(zzz)*h1->GetBinContent(zzz);
+//old method
+//err3 = fabs(h1->GetBinContent(zzz) - h3->GetBinContent(zzz))/2.;
+//err3 = err3/h3->GetBinContent(zzz)*h1->GetBinContent(zzz);
+//oldest method
+//err3_tmp = fabs(h1->GetBinContent(zzz) - h3->GetBinContent(zzz))/2.;
+//err3_tmp = err3_tmp/h1->GetBinContent(zzz)*h1->GetBinContent(zzz);
+
+//estimating the rel uncert for fermi corr
+err3_new = fabs(h1->GetBinContent(zzz) - h3->GetBinContent(zzz))/fabs(h1->GetBinContent(zzz) + h3->GetBinContent(zzz));
+//estimating the abs uncert for fermi corr
+err3_new = err3_new*h1->GetBinContent(zzz);
+
+
+//cout <<err3_tmp/h1->GetBinContent(zzz)<<" "<< err3/h1->GetBinContent(zzz) <<" "<< err3_new/h1->GetBinContent(zzz) << " rrrrrggfg\n";
+
 
 tmp = tmp+ err2/err3;
 
@@ -1760,7 +1836,7 @@ tmp = tmp+ err2/err3;
 //cout <<err2/err3<< " rrr\n";
 //err3=0.;
 //h1->SetBinError(zzz,(sqrt(err1*err1+err2*err2)));
-h1->SetBinError(zzz,(sqrt(err1*err1+err2*err2+err3*err3)));
+h1->SetBinError(zzz,(sqrt(err1*err1+err2*err2+err3_new*err3_new)));
 };
 //cout << tmp/(h1->GetNbinsX())<<" rrr\n";
 //cout << endl;

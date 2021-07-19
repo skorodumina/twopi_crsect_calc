@@ -13,4 +13,6 @@ It uses as inputs:
 
 The script calculates the single-differeential and integral cross sections and outputs them in the root file.
 
-The cross sections then should be subject to the binning corrections and systematic errors stud.
+The cross sections then should be subject to the binning corrections and systematic errors study.
+
+This version of the script calculates the final verson of the cross sections.
