@@ -4,3 +4,5 @@ This folder stores the scripts needed to calculate the FSI correction factor.
 miss_mass_fit_noq2dep.C takes the missing mass histrograms for the data and sim, fits them and outputs the factor for each W and Q2 bin. This script is supposed to be run five times for five different number of bins in the missing mass histigrams (needed for the systematic error estimation).
 
 fact_aver.C averages the five sets of FSI correction factors and outputs the resulting mean factor for each W and Q2 bin.
+
+NOTE: to estimate the systematic error due to the FSI correction, one should use the file with the fake cross section calculated using the number of exp events from the pim topology and the efficiency for both topologies. When producing this file, do NOT multiply event yield in the pim missing topology by the FSI correction factor and do NOT subtract empty target.	

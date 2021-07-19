@@ -29,7 +29,8 @@ Float_t max_pol_fit;
 //TFile *MyFile1 = new TFile("../../exclusivity_cut/out_data_2Dec19_mm0check_aft_mmom_cut.root","READ");
 //TFile *MyFile1 = new TFile("out_data_1Jul2021_CHECK.root","READ");
 //TFile *MyFile1 = new TFile("out_data_7Jul2021_CHECK_p_mom2.root","READ");
-TFile *MyFile1 = new TFile("out_data_12Jul2021_FINAL.root","READ");
+
+TFile *MyFile1 = new TFile("out_data_12Jul2021_FINAL.root","READ");//FINAL same as 6Mar19 and 3Apr19.root
 
 //TFile *MyFile2 = new TFile("out_sim_22may17_main_top_mm_plots_noq2dep.root","READ");
 //TFile *MyFile2 = new TFile("out_data_test_sim.root","READ");
@@ -43,7 +44,10 @@ TFile *MyFile1 = new TFile("out_data_12Jul2021_FINAL.root","READ");
 //TFile *MyFile2 = new TFile("out_sim_5Jul2021_CHECK.root","READ");
 //TFile *MyFile2 = new TFile("out_sim_7Jul2021_CHECK_p_mom.root","READ");
 //TFile *MyFile2 = new TFile("out_sim_10Jul2021_CHECK_p_mom.root","READ");
-TFile *MyFile2 = new TFile("out_sim_12Jul2021_FINAL_forfsicor.root","READ");
+//TFile *MyFile2 = new TFile("out_sim_12Jul2021_FINAL_forfsicor.root","READ");
+//TFile *MyFile2 = new TFile("out_sim_15Jul2021_TESTfsi.root","READ");
+
+TFile *MyFile2 = new TFile("out_sim_16Jul2021_fsicorr_111hadd.root","READ");//FINAL same as 11Mar19
 
 for (Short_t i=5;i<21;i++){
 
@@ -72,8 +76,8 @@ qqq << "main_top_mm_pim_noq2dep/h_maintop_pimismas_noq2dep_sim_"<<i;
 gDirectory->GetObject(qqq.str().c_str(),h4);
 qqq.str("");
 
-h3->Rebin(10);
-h4->Rebin(10);
+h3->Rebin(2);
+h4->Rebin(2);
 
 
 /*if (i<=11) h3->Rebin(4);
