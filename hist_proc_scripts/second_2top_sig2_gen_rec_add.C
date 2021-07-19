@@ -40,8 +40,8 @@ THnSparseD *tmp_gen3_evt;
 
 for (j=0; j<25; j++) {
 qqq.str("");
- qqq << "/cache/mss/clas/e1e/production/simulation_2pi/sim_skorodum_Aug2016/aft_2pi_mymain_sig2/fin_root20Aug18_sig2_" << j+25*p+1 << ".root";
-
+// qqq << "/cache/mss/clas/e1e/production/simulation_2pi/sim_skorodum_Aug2016/aft_2pi_mymain_sig2/fin_root20Aug18_sig2_" << j+25*p+1 << ".root";
+ qqq << "/cache/mss/clas/e1e/production/simulation_2pi/sim_skorodum_Aug2016/aft_2pi_mymain_test1Jul2021_sig2/fin_root1jul2021test_" << j+25*p+1 << ".root";
 
 cout << "Be patient. Processing file # "<<p+1<<", "<< j+25*p+1<<" \n";
 cout << qqq.str()<< " \n";

@@ -32,13 +32,18 @@ THnSparseD *h_empt_targ_comb_2[21][12];
 THnSparseD *h_empt_targ_comb_3[21][12];
 
 
+//FINAL July 2021
+Float_t arr_fsi_corr[21]={1, 1, 1, 1, 1, 1, 0.976738, 0.970207, 0.939529, 0.944704, 0.960213, 0.944959, 0.938171, 0.925779, 0.94226, 0.947861, 0.934721, 0.935682, 0.939866, 0.933197, 0.952926};
 
-//Float_t arr_fsi_corr[21]={1, 1, 1, 1, 1, 1, 1, 0.982119, 0.941429, 0.943192, 0.950638, 0.931489, 0.931424, 0.905527, 0.941959, 0.948355, 0.927991, 0.912614, 0.920581, 0.924705, 0.942017};
-//Float_t arr_fsi_corr[21]={1, 1, 1, 1, 1, 1, 0.965673, 0.959387, 0.928625, 0.945142, 0.950538, 0.935498, 0.923697, 0.901169, 0.937139, 0.941173, 0.921556, 0.93452, 0.943188, 0.920545, 0.953575};
-Float_t arr_fsi_corr[21]={1, 1, 1, 1, 1, 0.988392, 0.969984, 0.968229, 0.936191, 0.937695, 0.956958, 0.936891, 0.93861, 0.916472, 0.941413, 0.940626, 0.931557, 0.941312, 0.944813, 0.932938, 0.947908};
+TFile *MyFile_data = new TFile("/volatile/clas/clase1-6/skorodum/2pi_an_fin_check/two_pi_analysis_code/out_data_12Jul2021_FINAL.root","READ");
+TFile *MyFile_empt_targ = new TFile("/volatile/clas/clase1-6/skorodum/2pi_an_fin_check/two_pi_analysis_code/out_data_empty_FINAL.root","READ");
 
-TFile *MyFile_data = new TFile("/volatile/clas/clase1-6/skorodum/2pi_an_1May2016/out_data_17Aug18_nphb_varset.root","READ");
-TFile *MyFile_empt_targ = new TFile("/volatile/clas/clase1-6/skorodum/2pi_an_1May2016/out_data_empty_26july18.root","READ");
+
+//TFile *MyFile_data = new TFile("/volatile/clas/clase1-6/skorodum/2pi_an_fin_check/two_pi_analysis_code/out_data_1Jul2021_CHECK.root","READ");
+//TFile *MyFile_empt_targ = new TFile("/volatile/clas/clase1-6/skorodum/2pi_an_fin_check/two_pi_analysis_code/out_data_empty_test10Jul2021_NOpmomcut.root","READ");
+
+//TFile *MyFile_data = new TFile("/volatile/clas/clase1-6/skorodum/2pi_an_1May2016/out_data_17Aug18_nphb_varset.root","READ");
+//TFile *MyFile_empt_targ = new TFile("/volatile/clas/clase1-6/skorodum/2pi_an_1May2016/out_data_empty_26july18.root","READ");
 
 
 for (k=0; k<12;k++) {
@@ -168,7 +173,8 @@ h_empt_targ_comb_3[i][k]->Add(h_empt_targ_excl_3[i][k]);
 
 
 
-TFile *MyFile = new TFile("out_data_2top_comb_17Aug18_nphb_varset.root","RECREATE");
+TFile *MyFile = new TFile("out_data_2top_comb_17Jul2021_FINAL.root","RECREATE");
+//TFile *MyFile = new TFile("out_pimdata_17Jul2021_FINAL.root","RECREATE");
 MyFile->cd();
 
 for (k=0; k<12;k++) { 

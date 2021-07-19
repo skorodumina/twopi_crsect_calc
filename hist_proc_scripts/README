@@ -29,4 +29,4 @@ For the experimental data the following script uses as inputs two files (for the
 
 top_combine_data.C
 
-The script combines topologies and applis FSI correction. 
+The script combines topologies and applies FSI correction. 
