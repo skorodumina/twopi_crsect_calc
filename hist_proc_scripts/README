@@ -1,6 +1,6 @@
 These scripts are used to process the outputs of the double-pion analysis program, which is stored at https://github.com/skorodumina/two\_pi\_analysis\_code.git
 
-Simulation files that correspond to the final prodram version are stored at
+Simulation files that correspond to the final program version are stored at
 
 /mss/clas/e1e/production/simulation_2pi/sim_skorodum_Aug2016/aft_2pi_mymain_test1Jul2021_sig2/fin_root1jul2021test_*
 /mss/clas/e1e/production/simulation_2pi/sim_skorodum_Aug2016/aft_2pi_mymain_test1Jul2021_evt/fin_root1jul2021test_evt_*
