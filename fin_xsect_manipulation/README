@@ -1,9 +1,9 @@
-Final cross section manipulations include binning corrections, different cross section averaging and systematical uncertainty estimation. These manipulations are performed separately for the integral and single-differential cross sections (see separate folders). The following script oreder should be observed.
+Final cross section manipulations include binning corrections, different cross section averaging and systematical uncertainty estimation. These manipulations are performed separately for the integral and single-differential cross sections (see separate folders). The following script order should be observed.
 
 1) scale_1d.C
 
-	This script uses as inputs two files. One with 1diff distributions after  binning corrections that is an output from the script sequence from the folder "differential". Another with the 2D histogram filled with integral cross sections after binning corrections that is an output from the script sequence from the folder "integral".
-	The script scales 1diff distributions in a way they give the integrals from 2D histogram upon intergation. It also calculates finally the statistical errors of the integral (the relative statistical error is taken to be the average over relative errors for all 1diff distributions (12 totally)). 
+	This script uses two files as inputs. One file with 1diff distributions after the binning corrections that is an output from the script sequence from the folder "differential". The other file with the 2D histogram filled with integral cross sections after binning corrections that is an output from the script sequence from the folder "integral".
+	The script scales 1diff distributions in a way they give the integrals from 2D histogram upon integration. It also calculates finally the statistical errors of the integral (the relative statistical error is taken to be the average over relative errors for all 1diff distributions (12 totally)). 
 	The script outputs scaled 1diff distribution to the root file as well as redetermines the statistical errors of 2D histogram and then output the histogram to the same root file. 
 	
 2) sys_err.C
@@ -16,6 +16,12 @@ Final cross section manipulations include binning corrections, different cross s
 	- sys_err_rel_efferr.txt
 	- sys_err_rel_fsi.txt
 	
-	The txt files are the files with the correcponding parts of the systematical error. They are outputs of the different scripts in subfolders.
+	The txt files are the files with the corresponding parts of the systematical error. They are outputs of the different scripts in the subfolders.
 	
+	
+3) plot_diff.C
+	
+	This script produces the plots with the single-differential distributions. The script needs two input files: the file out_fin.root, which is the file with final integral and differential cross sections, and sys_err_tot.txt, which is the file with the total systematic uncertainty.
+	The script saves the plots into the corresponding Q2_* subfolders.
+
 	

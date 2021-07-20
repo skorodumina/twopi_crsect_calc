@@ -29,12 +29,53 @@ if ((Q2_bin> 1.25)&&(Q2_bin< 1.3))get_max_w = 1;
 return get_max_w;
 };
 
-Int_t get_min_w (Float_t Q2_bin) {
+
+	Int_t get_max_q2 (Float_t W_bin) {
+Int_t get_max_q2 = 0;
+
+if ((W_bin>=1.3)&&(W_bin<=1.325)) get_max_q2 = 12;
+if ((W_bin>=1.325)&&(W_bin<=1.35)) get_max_q2 = 12;
+if ((W_bin>=1.35)&&(W_bin<=1.375)) get_max_q2 = 12;
+if ((W_bin>=1.375)&&(W_bin<=1.4)) get_max_q2 = 12;
+
+
+if ((W_bin>=1.4)&&(W_bin<=1.425)) get_max_q2 = 12;
+if ((W_bin>=1.425)&&(W_bin<=1.45)) get_max_q2 = 12;
+if ((W_bin>=1.45)&&(W_bin<=1.475)) get_max_q2 = 12;
+if ((W_bin>=1.475)&&(W_bin<=1.5)) get_max_q2 = 12;
+
+if ((W_bin>=1.5)&&(W_bin<=1.525)) get_max_q2 = 12;
+if ((W_bin>=1.525)&&(W_bin<=1.55)) get_max_q2 = 12;
+if ((W_bin>=1.55)&&(W_bin<=1.575)) get_max_q2 = 12;
+if ((W_bin>=1.575)&&(W_bin<=1.6)) get_max_q2 = 11;
+
+if ((W_bin>=1.6)&&(W_bin<=1.625)) get_max_q2 = 11;
+if ((W_bin>=1.625)&&(W_bin<=1.65)) get_max_q2 = 10;
+if ((W_bin>=1.65)&&(W_bin<=1.675)) get_max_q2 = 10;
+if ((W_bin>=1.675)&&(W_bin<=1.7)) get_max_q2 = 9;
+
+if ((W_bin>=1.7)&&(W_bin<=1.725)) get_max_q2 = 8;
+if ((W_bin>=1.725)&&(W_bin<=1.75)) get_max_q2 = 7;
+if ((W_bin>=1.75)&&(W_bin<=1.775)) get_max_q2 = 6;
+if ((W_bin>=1.775)&&(W_bin<=1.8)) get_max_q2 = 4;
+
+if ((W_bin>=1.8)&&(W_bin<=1.825)) get_max_q2 = 3;
+
+return get_max_q2;
+};
+
+
+Int_t get_min_w (Float_t W_bin) {
 Int_t get_min_w = 0;
-if ((Q2_bin> 0.4)&&(Q2_bin< 0.45))get_min_w = 12;
+if ((W_bin> 0.4)&&(W_bin< 0.45))get_min_w = 12;
 return get_min_w;
 };
 
+Int_t get_min_q2 (Float_t W_bin) {
+Int_t get_min_q2 = 1;
+if ((W_bin> 1.6)&&(W_bin< 1.825))get_min_q2 = 0;
+return get_min_q2;
+};
 
 
 void sys_err(){
@@ -51,16 +92,17 @@ TH1D *phi_p,*phi_pim,*phi_pip;
 TH1D *h_w_int[12];
 TH1D *h_q2_int[21];
 
-Float_t Q2_bin;
+Float_t Q2_bin[12];
 Float_t W_bin[21];
 
 TH2D *q2vsw = new TH2D("q2vsw","q2vsw",22,1.3,1.85,12,0.4,1.);
 
-Float_t Int[21];
-Double_t Int_err[21];
-Float_t eps[21];
+Float_t Int[12][21];
+Double_t Int_err[12][21];
+Float_t eps[12][21];
 
 Float_t Sys_err[12][21];
+Float_t Rel_Sys_err_only[12][21];
 
 Float_t sys_err_sets[12][21];
 Float_t sys_err_efferr[12][21];
@@ -77,22 +119,21 @@ c->Divide(3,4);
 
 TCanvas *c1 = new TCanvas("c1","c1",700,720);
 c1->Divide(4,5);
+   double ax[21];
+   double ay[21];
+   double aexl[21];
+   double aexh[21];
+   double aeyl[21];
+   double aeyh[21];
+    
+   double ax2[12];
+   double ay2[12];
+   double aexl2[12];
+   double aexh2[12];
+   double aeyl2[12];
+   double aeyh2[12]; 
 
-   double ax2[12][21];
-   double ay2[12][21];
-   double aexl2[12][21];
-   double aexh2[12][21];
-   double aeyl2[12][21];
-   double aeyh2[12][21]; 
-     
-    double ax2_1dim[12];
-   double ay2_1dim[12];
-   double aexl2_1dim[12];
-   double aexh2_1dim[12];
-   double aeyl2_1dim[12];
-   double aeyh2_1dim[12]; 
 ifstream input("sys_err_rel_sets.txt");
-
 
 if(input.is_open()){
 i=0;
@@ -118,13 +159,11 @@ i=0;
 	    	    };
 	    
     };
-};
-
 input.close();
+};
 
 
 ifstream input2("sys_err_rel_efferr.txt");
-
 
 if(input2.is_open()){
 i=0;
@@ -150,9 +189,8 @@ i=0;
 	    	    };
 	    
     };
-};
-
 input2.close();
+};
 
 ifstream input3("sys_err_rel_fsi.txt");
 
@@ -180,58 +218,29 @@ i=0;
 	    	    };
 	    
     };
-};
-
 input3.close();
-
-
-
-
-for (i=0; i<21;i++) {
-qqq.str("");
-qqq << "h_q2_int_" << i;
-h_q2_int[i] = new TH1D(qqq.str().c_str(),qqq.str().c_str(),12, 0.4,1.);
-qqq.str("");
 };
 
-for (i=0; i<21;i++) {
-for (qq2=1; qq2<=12;qq2++) {
-h_q2_int[i]->SetBinContent(qq2,0.);
-h_q2_int[i]->SetBinError(qq2,0.);
 
-ax2[qq2][i] = 0.425 + 0.05*qq2;
-ay2[qq2][i]=0;
-aexl2[qq2][i]=0;
-aexh2[qq2][i]=0;
-aeyl2[qq2][i]=0;
-aeyh2[qq2][i]=0;
-
-};
-};
 
 for (qq2=0; qq2<12;qq2++) {
-for (i=0; i<21;i++) {
-cout << qq2<<" "<<i<< " "<<sys_err_fsi[qq2][i]<<" rrr\n";
+for (Int_t i=0; i<21;i++) {
+Sys_err[qq2][i] = 0.;
+Rel_Sys_err_only[qq2][i] = 0.;
+Int[qq2][i] = 0.;
 };
 };
+
 
 TFile *file_cr_sec = new TFile("out_fin.root","READ");
 file_cr_sec->cd();
 
 gDirectory->GetObject("q2vsw_corr",q2vsw);
 
-
+//PLOTTING W dependences
 for (qq2=0; qq2<12;qq2++) {
-Q2_bin = 0.425 + 0.05*qq2;
-   double ax[21];
-   double ay[21];
-   double aexl[21];
-   double aexh[21];
-   double aeyl[21];
-   double aeyh[21];
-   
-
-     
+Q2_bin[qq2] = 0.425 + 0.05*qq2;
+    
 qqq.str("");
 qqq << "h_w_int_" << qq2;
 h_w_int[qq2] = new TH1D(qqq.str().c_str(),qqq.str().c_str(),21, 1.3,1.825);
@@ -239,130 +248,46 @@ qqq.str("");
 
 for (Int_t i=0; i<21;i++) {
 ax[i] = 1.3125+0.025*i;
-ay[i]=0;
+ay[i]= 0;
 aexl[i]=0;
 aexh[i]=0;
 aeyl[i]=0;
 aeyh[i]=0;
-
-
-
 }; 
 
-
-for (i=get_min_w(Q2_bin); i<get_max_w(Q2_bin);i++) {
+for (i=get_min_w(Q2_bin[qq2]); i<get_max_w(Q2_bin[qq2]);i++) {
 
 W_bin[i] = 1.3125+0.025*i;
 
 
-/*qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h1prj_inv_m_pip_p_1_bin_corr";
-gDirectory->GetObject(qqq.str().c_str(),m_pip_p);
-qqq.str("");
+Int[qq2][i] = q2vsw->GetBinContent(i+1,qq2+1);
+Int_err[qq2][i] = q2vsw->GetBinError(i+1,qq2+1);
 
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h2prj_inv_m_pip_pim_1_bin_corr";
-gDirectory->GetObject(qqq.str().c_str(),m_pip_pim);
-qqq.str("");
+eps[qq2][i] = Int_err[qq2][i]/Int[qq2][i];
 
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h3prj_inv_m_pim_p_1_bin_corr";
-gDirectory->GetObject(qqq.str().c_str(),m_pim_p);
-qqq.str("");
-
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h1prj_th_P_bin_corr";
-gDirectory->GetObject(qqq.str().c_str(),theta_p);
-qqq.str("");
-
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h1prj_th_PIm_bin_corr";
-gDirectory->GetObject(qqq.str().c_str(),theta_pim);
-qqq.str("");
-
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h1prj_th_PIp_bin_corr";
-gDirectory->GetObject(qqq.str().c_str(),theta_pip);
-qqq.str("");
-
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h1prj_alpha_PIpPIm_pipf_bin_corr";
-gDirectory->GetObject(qqq.str().c_str(),alpha_p);
-qqq.str("");
-
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h2prj_alpha_PPIp_piPIm_bin_corr";
-gDirectory->GetObject(qqq.str().c_str(),alpha_pim);
-qqq.str("");
-
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h3prj_alpha_PPIm_piPIp_bin_corr";
-gDirectory->GetObject(qqq.str().c_str(),alpha_pip);
-qqq.str("");
-
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h_phi_protbin_corr";
-gDirectory->GetObject(qqq.str().c_str(),phi_p);
-qqq.str("");
-
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h_phi_pimbin_corr";
-gDirectory->GetObject(qqq.str().c_str(),phi_pim);
-qqq.str("");
-
-qqq.str("");
-qqq << "q2_" << Q2_bin << "/w_" << W_bin[i] << "/h_phi_pipbin_corr";
-gDirectory->GetObject(qqq.str().c_str(),phi_pip);
-qqq.str("");
-
-Int[i] = m_pip_p->Integral();
-
-m_pip_p->IntegralAndError(1,m_pip_p->GetNbinsX(),Int_err[i]);
-
-eps[i] = Int_err[i]/Int[i];
-Int[i] = Int[i]*m_pip_p->GetBinWidth(5);
-Int_err[i] = eps[i]*Int[i];
-
-h_w_int[qq2]->Fill(W_bin[i],Int[i]);
-h_w_int[qq2]->SetBinError(h_w_int[qq2]->FindBin(W_bin[i]),Int_err[i]);  
-
-cout << Q2_bin<<" "<<Int[i]<<" t\n";
-h_q2_int[i]->SetBinContent(h_q2_int[i]->FindBin(Q2_bin),Int[i]);
-h_q2_int[i]->SetBinError(h_q2_int[i]->FindBin(Q2_bin),Int_err[i]);  */
-
-Int[i] = q2vsw->GetBinContent(i+1,qq2+1);
-Int_err[i] = q2vsw->GetBinError(i+1,qq2+1);
-
-eps[i] = Int_err[i]/Int[i];
-
-h_w_int[qq2]->Fill(W_bin[i],Int[i]);
-h_w_int[qq2]->SetBinError(h_w_int[qq2]->FindBin(W_bin[i]),Int_err[i]);  
+h_w_int[qq2]->Fill(W_bin[i],Int[qq2][i]);
+h_w_int[qq2]->SetBinError(h_w_int[qq2]->FindBin(W_bin[i]),Int_err[qq2][i]);  
 
 //cout << Q2_bin<<" "<<Int[i]<<" t\n";
-h_q2_int[i]->SetBinContent(h_q2_int[i]->FindBin(Q2_bin),Int[i]);
-h_q2_int[i]->SetBinError(h_q2_int[i]->FindBin(Q2_bin),Int_err[i]); 
 
+//cout << qq2<<" "<< i<< " "<<100.*eps[i]<<" \n";
 
-Sys_err[qq2][i] = Int[i]*sqrt(eps[i]*eps[i]+sys_err_radcorr*sys_err_radcorr+sys_err_norm_elid*sys_err_norm_elid+ sys_err_fsi[qq2][i]*sys_err_fsi[qq2][i] + sys_err_sets[qq2][i]*sys_err_sets[qq2][i]+sys_err_efferr[qq2][i]*sys_err_efferr[qq2][i]);
+Sys_err[qq2][i] = Int[qq2][i]*sqrt(eps[qq2][i]*eps[qq2][i]+sys_err_radcorr*sys_err_radcorr+sys_err_norm_elid*sys_err_norm_elid+ sys_err_fsi[qq2][i]*sys_err_fsi[qq2][i] + sys_err_sets[qq2][i]*sys_err_sets[qq2][i]+sys_err_efferr[qq2][i]*sys_err_efferr[qq2][i]);
+
+Rel_Sys_err_only[qq2][i] = sqrt(sys_err_radcorr*sys_err_radcorr+sys_err_norm_elid*sys_err_norm_elid+ sys_err_fsi[qq2][i]*sys_err_fsi[qq2][i] + sys_err_sets[qq2][i]*sys_err_sets[qq2][i]+sys_err_efferr[qq2][i]*sys_err_efferr[qq2][i]);
+
+//cout << qq2<<" "<<i<< " "<<100*Rel_Sys_err_only[qq2][i]<<" \% rrr\n";
+//cout <<Q2_bin<<" " <<W_bin[i]<<" "<<sqrt(eps[i]*eps[i])*100. <<" "<<sqrt(sys_err_radcorr*sys_err_radcorr+sys_err_norm_elid*sys_err_norm_elid+ sys_err_fsi[qq2][i]*sys_err_fsi[qq2][i] + sys_err_sets[qq2][i]*sys_err_sets[qq2][i]+sys_err_efferr[qq2][i]*sys_err_efferr[qq2][i])*100. <<" rrr\n";
 
 ax[i] = W_bin[i];
-ay[i] = Int[i];
-aexl[i] = 0.0125;
-aexh[i] = 0.0125;
+ay[i] = Int[qq2][i];
+aexl[i]=0.0125;
+aexh[i]=0.0125;
 aeyl[i] = Sys_err[qq2][i];
 aeyh[i] = Sys_err[qq2][i];
+};//end of W loop
 
-ax2[qq2][i] = Q2_bin;
-ay2[qq2][i] = Int[i];
-aexl2[qq2][i] = 0.025;
-aexh2[qq2][i] = 0.025;
-aeyl2[qq2][i] = Sys_err[qq2][i];
-aeyh2[qq2][i] = Sys_err[qq2][i];
-
-
-
-};
-
+//cout <<" \n";
 h_w_int[qq2]->SetMarkerStyle(20);
 h_w_int[qq2]->SetMarkerSize(0.8);
 h_w_int[qq2]->SetMarkerColor(kBlack);
@@ -377,20 +302,19 @@ h_w_int[qq2]->SetAxisRange(0.,35.,"Y");
 h_w_int[qq2]->SetAxisRange(1.3,1.8,"X");
 
 qqq.str("");
-qqq << "Q^{2} = " << Q2_bin << " GeV^{2}";
+qqq << "Q^{2} = " << Q2_bin[qq2] << " GeV^{2}";
 h_w_int[qq2]->SetTitle(qqq.str().c_str());
 
 h_w_int[qq2] ->GetYaxis()->SetTitle("#sigma, #mub");
 c->cd(qq2+1);
-c->cd(i+1)->SetBottomMargin(0.15);
-c->cd(i+1)->SetLeftMargin(0.175);
+c->cd(qq2+1)->SetBottomMargin(0.15);
+c->cd(qq2+1)->SetLeftMargin(0.175);
 
 h_w_int[qq2]->Draw("e1pX0");
 
-
 TGraphAsymmErrors* gae = new TGraphAsymmErrors(21, ax, ay, aexl, aexh, aeyl, aeyh);
 qqq.str("");
-qqq << "Q^{2} = " << Q2_bin << " GeV^{2}";
+qqq << "Q^{2} = " << Q2_bin[qq2] << " GeV^{2}";
 gae->SetTitle(qqq.str().c_str());
 
 gae->GetXaxis()->SetNdivisions(4+400);
@@ -405,8 +329,6 @@ gae->GetYaxis()->SetTitleSize(0.1);
 gae->GetXaxis()->SetTitleOffset(0.9);
 gae->GetYaxis()->SetTitleOffset(0.7);
 
-
-
 gae->GetXaxis()->SetLabelSize(0.08);
   
    gae->SetFillColor(kRed-8);
@@ -415,67 +337,78 @@ gae->GetXaxis()->SetLabelSize(0.08);
    gae->SetMaximum(35.);
    gae->GetXaxis()->SetRangeUser(1.2875,1.85);
 
-
 gae->Draw("a2");
 
 h_w_int[qq2]->Draw("e1pX0 same");
 
+};//end of q2 loop
 
-
-
-
-
-};
-
-
-
-
-
-
+//PLOTTING Q2 dependences
 for (i=0; i<20;i++) {
+W_bin[i] = 1.3125+0.025*i;
+
+qqq.str("");
+qqq << "h_q2_int_" << i;
+h_q2_int[i] = new TH1D(qqq.str().c_str(),qqq.str().c_str(),12, 0.4, 1.);
+qqq.str("");
 
 for (qq2=0; qq2<12;qq2++) {
-
-
-ax2_1dim[qq2] = 0.425 + 0.05*qq2;
-ay2_1dim [qq2]= ay2[qq2][i];
-aexl2_1dim[qq2] = aexl2[qq2][i];
-aexh2_1dim[qq2] = aexh2[qq2][i];
-aeyl2_1dim[qq2] = aeyl2[qq2][i];
-aeyh2_1dim[qq2] = aeyh2[qq2][i];
-
-
-//cout << aeyl2[qq2][i]<<" mmm\n";
+ax2[qq2] =0.425 + 0.05*qq2 ;
+ay2[qq2]= 0;
+aexl2[qq2] = 0.;
+aexh2[qq2] = 0.;
+aeyl2[qq2] = 0.;
+aeyh2[qq2] = 0.;
 };
 
+//cout << W_bin[i] << " "<<get_max_q2(W_bin[i])<<endl;
 
+for (qq2=get_min_q2(W_bin[i]); qq2<get_max_q2(W_bin[i]);qq2++) {
+//for (qq2=0; qq2<12;qq2++) {
 
-c1->cd(i+1);
-c1->cd(i+1)->SetBottomMargin(0.15);
-c1->cd(i+1)->SetLeftMargin(0.175);
+Q2_bin[qq2] = 0.425 + 0.05*qq2;
+
+h_q2_int[i]->Fill(Q2_bin[qq2],Int[qq2][i]);
+h_q2_int[i]->SetBinError(h_q2_int[i]->FindBin(Q2_bin[qq2]),Int_err[qq2][i]); 
+
+ax2[qq2] = Q2_bin[qq2];
+ay2[qq2]= Int[qq2][i];
+aexl2[qq2] = 0.025;
+aexh2[qq2] = 0.025;
+aeyl2[qq2] = Sys_err[qq2][i];
+aeyh2[qq2] = Sys_err[qq2][i];
+
+};
 
 h_q2_int[i]->SetMarkerStyle(20);
 h_q2_int[i]->SetMarkerSize(0.8);
 h_q2_int[i]->SetMarkerColor(kBlack);
 h_q2_int[i]->SetLineColor(kBlack);
 
-
+h_q2_int[i]->GetXaxis()->SetTitle("W, GeV");
+h_q2_int[i]->GetXaxis()->SetNdivisions(8);
+h_q2_int[i]->GetXaxis()->SetLabelSize(0.04);
+h_q2_int[i]->GetYaxis()->SetLabelSize(0.04);
 Double_t max = h_q2_int[i]->GetMaximum(); 
 h_q2_int[i]->SetAxisRange(0.25*h_q2_int[i]->GetMinimum(),1.25*h_q2_int[i]->GetMaximum(),"Y"); 
-//h_q2_int[i]->SetAxisRange(1.3,1.8,"X");
+h_q2_int[i]->SetAxisRange(0.4,1.,"X");
 
 qqq.str("");
 qqq << "W = " << 1.3125+0.025*i << " GeV";
+h_q2_int[i]->SetTitle(qqq.str().c_str());
+h_q2_int[i] ->GetYaxis()->SetTitle("#sigma, #mub");
 
-qqq.str("");
-h_q2_int[i]->SetTitleSize(0.15,"t"); 
+c1->cd(i+1);
+c1->cd(i+1)->SetBottomMargin(0.15);
+c1->cd(i+1)->SetLeftMargin(0.175);
 
 h_q2_int[i]->Draw("e1pX0");
 
 
-TGraphAsymmErrors* gae2 = new TGraphAsymmErrors(12, ax2_1dim, ay2_1dim, aexl2_1dim, aexh2_1dim, aeyl2_1dim, aeyh2_1dim);
+
+TGraphAsymmErrors* gae2 = new TGraphAsymmErrors(12, ax2, ay2, aexl2, aexh2, aeyl2, aeyh2);
 qqq.str("");
-qqq << "W = " << 1.3125+0.025*i << " GeV";
+qqq << "W = " << W_bin[i] << " GeV";
 gae2->SetTitle(qqq.str().c_str());
 
 gae2->GetXaxis()->SetNdivisions(4+400);
@@ -489,18 +422,38 @@ gae2->GetYaxis()->SetTitleSize(0.1);
 gae2->GetXaxis()->SetTitleOffset(0.8);
 gae2->GetYaxis()->SetTitleOffset(0.7);
 
- 
    gae2->SetFillColor(kRed-8);
 //   gae2->SetFillStyle(3001);
    gae2->SetMinimum(0.25*h_q2_int[i]->GetMinimum());
    gae2->SetMaximum(1.25*h_q2_int[i]->GetMaximum());
    gae2->GetXaxis()->SetRangeUser(0.4,1.);
 
-
-gae2->Draw("a2 same");
+gae2->Draw("a2");
 
 h_q2_int[i]->Draw("e1pX0 same");
-
 };
 
+for(qq2=0; qq2<12; qq2++){
+for(i=0; i<21; i++){
+
+cout << Q2_bin[qq2]<<" "<<W_bin[i]<< " "<<Int[qq2][i]<<" "<<Sys_err[qq2][i]<<" "<<Int[qq2][i]-Sys_err[qq2][i]<<" "<<Int[qq2][i]+Sys_err[qq2][i]<<"  rrr\n";
+};
+};
+
+Short_t qq22,i2;
+ofstream ofs;
+ofs.open("sys_err_tot.txt", ios::out);
+if (ofs.is_open()){
+
+for(qq22=0; qq22<12; qq22++){
+for(i2=0; i2<21; i2++){
+
+ofs << qq22 << "," << i2 << ","  << Rel_Sys_err_only[qq22][i2]<< endl;
+
+};
+};
+
+ ofs.close();
+  };
+ 
 };
