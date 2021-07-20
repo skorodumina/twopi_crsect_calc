@@ -172,7 +172,7 @@ ostringstream qqq1;
 //Define input files
 //TFile *file_cr_sec_pim = new TFile("out_cr_sec_phi.root","READ");
 //TFile *file_cr_sec_pim = new TFile("out_cr_sec_frac_fsi_6Aug18_phi.root","READ");
-TFile *file_cr_sec_pim = new TFile("out_cr_sec_03_20Nov18.root","READ");
+TFile *file_cr_sec_pim = new TFile("../input_files/out_cr_sec_mdl.root","READ");
 
 TFile *file_corr_fact = new TFile("mass_corr_factor.root","READ");
 

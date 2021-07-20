@@ -9,7 +9,6 @@ TH1D *theta_p,*theta_pim,*theta_pip;
 TH1D *alpha_p,*alpha_pim,*alpha_pip;
 TH1D *alpha_p_sym,*alpha_pim_sym,*alpha_pip_sym;
 TH1D *phi_p,*phi_pim,*phi_pip;
-TH1D *phi_p_sym,*phi_pim_sym,*phi_pip_sym;
 
 TH1D *m_pip_p_bin_corr,*m_pip_pim_bin_corr,*m_pim_p_bin_corr;
 TH1D *theta_p_bin_corr,*theta_pim_bin_corr,*theta_pip_bin_corr;
@@ -108,7 +107,7 @@ return h_out;
 
 //---------------------------------------------
 //Theta bin corr
-TH1D *h_bin_corr_theta(TH1D *h) {
+TH1D *h_bin_corr_angle(TH1D *h) {
 
 TH1D *h_out;
 Double_t factor;
@@ -361,11 +360,11 @@ cout << "MASS pim p \n";
 m_pim_p_bin_corr = h_bin_corr_mass(m_pim_p);
 
 cout << "THETA p \n";
-theta_p_bin_corr = h_bin_corr_theta(theta_p);
+theta_p_bin_corr = h_bin_corr_angle(theta_p);
 cout << "THETA pim \n";
-theta_pim_bin_corr = h_bin_corr_theta(theta_pim);
+theta_pim_bin_corr = h_bin_corr_angle(theta_pim);
 cout << "THETA pip \n";
-theta_pip_bin_corr = h_bin_corr_theta(theta_pip);
+theta_pip_bin_corr = h_bin_corr_angle(theta_pip);
 
 cout << "ALPHA p \n";
 alpha_p_sym = h_alpha_sym(alpha_p);
@@ -378,14 +377,11 @@ alpha_pip_sym = h_alpha_sym(alpha_pip);
 alpha_pip_bin_corr = h_bin_corr(alpha_pip,alpha_pip_sym);
 
 cout << "PHI p \n"; 
-phi_p_sym = h_alpha_sym(phi_p);
-phi_p_bin_corr = h_bin_corr(phi_p,phi_p_sym);
+phi_p_bin_corr = h_bin_corr_angle(phi_p);
 cout << "PHI pim \n"; 
-phi_pim_sym = h_alpha_sym(phi_pim);
-phi_pim_bin_corr = h_bin_corr(phi_pim,phi_pim_sym);
+phi_pim_bin_corr = h_bin_corr_angle(phi_pim);
 cout << "PHI pip \n"; 
-phi_pip_sym = h_alpha_sym(phi_pip);
-phi_pip_bin_corr = h_bin_corr(phi_pip,phi_pip_sym);
+phi_pip_bin_corr = h_bin_corr_angle(phi_pip);
 
 file_out->cd();
 q2dir[qq2]->cd();

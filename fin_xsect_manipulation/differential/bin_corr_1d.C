@@ -541,7 +541,7 @@ leg_w_int->SetFillStyle(0);
 
 
 //Define input files
-TFile *file_cr_sec_pim = new TFile("out_avrg_corr1.root","READ");
+TFile *file_cr_sec_pim = new TFile("out_aft_masscor.root","READ");
 
 for (Int_t qq2=2; qq2<3;qq2++) {
 Q2_bin = 0.425 + 0.05*qq2;
