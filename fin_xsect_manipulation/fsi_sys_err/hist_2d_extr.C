@@ -53,7 +53,7 @@ Float_t factor_035;
 
 
 Float_t sys_err[12][21];
-TH2D *q2vsw = new TH2D("q2vsw","q2vsw",22,1.3,1.85,12,0.4,1.);
+TH2D *q2vsw = new TH2D("q2vsw","q2vsw",21,1.3,1.825,12,0.4,1.);
 Float_t Q2_bin;
 Float_t W_bin[21];
 
@@ -61,13 +61,13 @@ Short_t qq2,i;
 ostringstream qqq;
 
 
-//TFile *file_out2 = new TFile("out_q2vsw_hist_full.root","RECREATE");
-TFile *file_out2 = new TFile("out_q2vsw_hist_pimdata.root","RECREATE");
+TFile *file_out2 = new TFile("out_q2vsw_hist_full.root","RECREATE");
+//TFile *file_out2 = new TFile("out_q2vsw_hist_pimdata.root","RECREATE");
 
 TCanvas *c = new TCanvas("c","c",650,500);;
 TCanvas *c1 = new TCanvas("c1","c1",650,500);;
-//TFile *file_cr_sec_03 = new TFile("out_cr_sec_03_20Nov18.root","READ");
-TFile *file_cr_sec_03 = new TFile("out_cr_sec_03_pim_20Nov18.root","READ");
+TFile *file_cr_sec_03 = new TFile("../input_files/out_cr_sec_mdl.root","READ");
+//TFile *file_cr_sec_03 = new TFile("../input_files/out_cr_sec_pimdata.root","READ");
 
 
 for (qq2=0; qq2<12;qq2++) {

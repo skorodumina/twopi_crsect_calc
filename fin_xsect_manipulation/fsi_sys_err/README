@@ -1,10 +1,16 @@
-The scripts in this folder are needed for the estimation of the systematical uncertainty due to fsi correction. 
+The scripts in this folder are needed for the estimation of the systematic uncertainty due to the FSI correction. 
 
 1) hist_2d_extr.C
 
 	This script extracts two 2D histograms filled with integral cross sections (successively). One for regular cross sections with eff_err = 0.3 and another for the fake cross section calculated using the number of exp events from the pim topology and the efficiency for both topologies.
-	This script uses two input files (successively), both are the output of the cross section calculation program for the cases specified above.	
+	This script uses two input files (successively), both are the output of the cross section calculation program for the cases specified above.
+	
+	NOTE: you should run this script twice (for different input/ouput files specified inside).	
+	NOTE: for the fake cross section do NOT multiply event yield in the pim missing topology by the FSI correction factor and do NOT subtract empty target.
 	
 2) fsi_sys_err.C
 
-	This script uses the file with two 2D histograms produced by the previous script. Then is calculates the systematical uncertainty due to fsi correction and outputs it to the txt file.
+	This script uses the file with two 2D histograms produced by the previous script. Then is calculates the systematical uncertainty due to the FSI correction and outputs it to the txt file.
+	
+	NOTE: in this script the up-to-date FSI correction factors (five sets for five histogram binning) should be manually added.
+	
