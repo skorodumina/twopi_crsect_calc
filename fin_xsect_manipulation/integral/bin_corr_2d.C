@@ -363,7 +363,7 @@ cout << h_q2_corr->GetBinContent(qq2+1)<<" ttt\n";
 };
 };
 
-Int_t qbin =4;
+Int_t qbin =9;
 Int_t aa_min,aa_max;
 Double_t *x,*y;
 Int_t nbins;
@@ -505,7 +505,7 @@ c1->SetTopMargin(0.08);
 c1->SetBottomMargin(0.13);
 c1->SetRightMargin(0.01);
 
-qqq << "Q^{2} = " << Q2_cur <<" GeV";
+qqq << "Q^{2} = " << Q2_cur <<" GeV^{2}";
 h_w->SetTitle(qqq.str().c_str());
 qqq.str("");
 //h_w->SetTitleSize(1.3);

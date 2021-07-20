@@ -17,9 +17,9 @@ TH1D *phi_p_bin_corr,*phi_pim_bin_corr,*phi_pip_bin_corr;
 
 TFile *file_out = new TFile("../out_q2vsw_hist_corr.root","RECREATE");
 
-TH2D *q2vsw = new TH2D("q2vsw","q2vsw",22,1.3,1.85,12,0.4,1.);
+TH2D *q2vsw = new TH2D("q2vsw","q2vsw",21,1.3,1.825,12,0.4,1.);
 
-TH2D *q2vsw_corr = new TH2D("q2vsw_corr","q2vsw_corr",22,1.3,1.85,12,0.4,1.);
+TH2D *q2vsw_corr = new TH2D("q2vsw_corr","q2vsw_corr",21,1.3,1.825,12,0.4,1.);
 TCanvas *c = new TCanvas("c","c",800,600);;
 TH1D *h_q2, *h_q2_corr;
 TF1 *f;

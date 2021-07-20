@@ -65,13 +65,16 @@ ostringstream qqq;
 Float_t avrg_value;
 Int_t bin_filled;
 
-TFile *file_out = new TFile("out_avrg_03.root","RECREATE");
+
+TFile *file_out = new TFile("out_avrg_mdl.root","RECREATE");
+//TFile *file_out = new TFile("out_avrg_grt.root","RECREATE");
+//TFile *file_out = new TFile("out_avrg_lss.root","RECREATE");
 
 TCanvas *c = new TCanvas("c","c",650,500);;
 
-TFile *file_cr_sec = new TFile("out_cr_sec_03_20Nov18.root","READ");
-//TFile *file_cr_sec = new TFile("out_cr_sec_035_20Nov18.root","READ");
-//TFile *file_cr_sec = new TFile("out_cr_sec_025_20Nov18.root","READ");
+TFile *file_cr_sec = new TFile("../input_files/out_cr_sec_mdl.root","READ");
+//TFile *file_cr_sec = new TFile("../input_files/out_cr_sec_grt.root","READ");
+//TFile *file_cr_sec = new TFile("../input_files/out_cr_sec_lss.root","READ");
 
 for (qq2=0; qq2<12;qq2++) {
 for (i=0; i<21;i++) {
@@ -258,7 +261,7 @@ for(qq2=0; qq2<12; qq2++){
 for(i=0; i<21; i++){
 
 ofs << qq2 << "," << i << ","  << sys_err[qq2][i]<< "\n";
-//cout << qq2 << "," << i << "," << sys_err[qq2][i]<< "\n";
+cout << qq2 << "," << i << "," << 100*sys_err[qq2][i]<< "\n";
 
 };
 };
