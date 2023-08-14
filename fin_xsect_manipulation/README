@@ -1,4 +1,4 @@
-Final cross section manipulations include binning corrections, different cross section averaging and systematical uncertainty estimation. These manipulations are performed separately for the integral and single-differential cross sections (see separate folders). The following script order should be observed.
+Final cross section manipulations include binning corrections, different cross section averaging and systematical uncertainty estimation. These manipulations are performed separately for the integral and single-differential cross sections (see separate folders). See 'scheme.pdf' for details. The following script order should be observed.
 
 1) scale_1d.C
 
